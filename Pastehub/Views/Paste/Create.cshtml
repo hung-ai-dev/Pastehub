@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "New Paste";
+}
+@using Pastehub.Constants
+@model Pastehub.Models.Paste
+
+
+@using (Html.BeginForm("Create", "Paste"))
+{
+    <div class="row">
+        <div class="form-group">
+            <label>New Paste</label>
+            @Html.TextAreaFor(model => model.PasteContent, new {@class = "form-control"})
+        </div>
+
+        <div class="form-horizontal">
+            <label>Optional Settings</label>
+            <hr/>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Syntax Highlighting</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.SyntaxHighlight,
+                            new SelectList(Model.SyntaxHighlights, "Name", "NameDisplay"),
+                            new {@class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Paste Expiration</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.PasteExpiration,
+                            new SelectList(PasteExpiration.Expiration),
+                            new {@class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Paste Exposure</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => model.PasteExposure,
+                            new SelectList(PasteExposure.Exposure),
+                            new {@class = "form-control"})
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Paste Name</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(model => model.PasteName,
+                            new {@class = "form-control"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-2" style="padding-left: 35px">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+}

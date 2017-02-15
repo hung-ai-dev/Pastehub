@@ -1,0 +1,84 @@
+﻿hr {
+    border-color: rgba(50, 50, 50, 0.3);
+    border-style: solid none;
+    border-width: 1px 0;
+    margin: 18px 0;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*override bootstrap*/
+.container > .navbar-collapse {
+    background-color: #de0c0c;
+}
+
+.navbar-inverse {
+    background-color: #de0c0c;
+}
+
+.navbar-inverse .navbar-brand {
+    color: rgb(255, 255, 255);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: rgb(255, 255, 255);
+    font-size: 15px;
+}
+
+#body-paste {
+    margin-top: 30px;
+}
+
+#body-paste textarea {
+    width: 95%;
+    height: 300px;
+    max-width: 95%;
+    /*border: 0.5px ridge rgba(50, 50, 50, 0.4);
+    border-radius: 5px;*/
+}
+
+#new-paste-area .content-left-title {
+    padding-bottom: 15px;
+}
+
+.content-right {
+    height: 300px;
+}
+
+#setting-area {
+    margin-top: 20px;
+}
+
+#side-content {
+    position: fixed !important;
+    right: 0 !important;
+}
+
+.navbar-inverse {
+    border-color: #de0c0c;
+}

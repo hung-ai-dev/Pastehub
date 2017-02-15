@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Detail";
+}
+@model Pastehub.Models.Paste
+
+<h2>Detail</h2>
+
+<pre class="">
+<code class="language-@Model.SyntaxHighlight line-numbers">
+        @Model.PasteContent
+    </code>
+</pre>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+        
+        })
+    </script>
+}

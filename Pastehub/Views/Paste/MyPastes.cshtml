@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "My Pastes";
+}
+@model List<Pastehub.ViewModels.PasteViewModel>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>NAME</th>
+        <th>ADDED</th>
+        <th>EXPIRES</th>
+        <th>HITS</th>
+        <th>SYNTAX</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(@item.PasteName, "Detail", "Paste", new { id = @item.Id }, null)
+            </td>
+            <td></td>
+            <td>@item.PasteExpiration</td>
+            <td></td>
+            <td>@item.SyntaxHighlight</td>
+        </tr>
+    }
+</table>
