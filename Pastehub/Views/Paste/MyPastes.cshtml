@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "My Pastes";
 }
 @model List<Pastehub.ViewModels.PasteViewModel>
@@ -19,9 +18,11 @@
             <td>
                 @Html.ActionLink(@item.PasteName, "Detail", "Paste", new { id = @item.Id }, null)
             </td>
-            <td></td>
+            <td>
+                @item.CreatedDateTime.ToString("dd/MM/yy")
+            </td>
             <td>@item.PasteExpiration</td>
-            <td></td>
+            <td>@item.Hits</td>
             <td>@item.SyntaxHighlight</td>
         </tr>
     }

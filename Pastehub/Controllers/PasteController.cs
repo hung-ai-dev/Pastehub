@@ -69,6 +69,7 @@ namespace Pastehub.Controllers
             {
                 var client = PastehubHttpClient.GetClient();
                 newPaste.UserId = User.Identity.GetUserId();
+                newPaste.CreatedDateTime = DateTime.Now;
 
                 var serializedItem = JsonConvert.SerializeObject(newPaste);
                 var response = await client.PostAsync("/api/pastes",

@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Public Pastes";
 }
-@model IEnumerable<Pastehub.Models.Paste>
+@model IEnumerable<Pastehub.ViewModels.PasteViewModel>
 
 <table class="table table-striped table-hover">
     <tr>
@@ -21,7 +21,7 @@
             <td></td>
             <td>@item.PasteExpiration</td>
             <td></td>
-            <td>@item.SyntaxDisplay</td>
+            <td>@item.SyntaxHighlight</td>
         </tr>
     }
 </table>

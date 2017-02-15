@@ -223,6 +223,18 @@
     <Compile Include="Migrations\201702150013491_AddSyntaxHighlight.Designer.cs">
       <DependentUpon>201702150013491_AddSyntaxHighlight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702150714473_Foo.cs" />
+    <Compile Include="Migrations\201702150714473_Foo.Designer.cs">
+      <DependentUpon>201702150714473_Foo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702150746025_AddDatetime.cs" />
+    <Compile Include="Migrations\201702150746025_AddDatetime.Designer.cs">
+      <DependentUpon>201702150746025_AddDatetime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702150752401_AddHits.cs" />
+    <Compile Include="Migrations\201702150752401_AddHits.Designer.cs">
+      <DependentUpon>201702150752401_AddHits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -316,6 +328,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702150013491_AddSyntaxHighlight.resx">
       <DependentUpon>201702150013491_AddSyntaxHighlight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702150714473_Foo.resx">
+      <DependentUpon>201702150714473_Foo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702150746025_AddDatetime.resx">
+      <DependentUpon>201702150746025_AddDatetime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702150752401_AddHits.resx">
+      <DependentUpon>201702150752401_AddHits.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

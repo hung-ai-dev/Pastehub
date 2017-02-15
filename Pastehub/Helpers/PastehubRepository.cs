@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Pastehub.Models;
 using Microsoft.AspNet.Identity;
+using Pastehub.Constants;
 
 namespace Pastehub.Helpers
 {
@@ -20,6 +21,8 @@ namespace Pastehub.Helpers
         public Paste GetPasteWithId(int id)
         {
             Paste paste = _context.Pastes.FirstOrDefault(p => p.Id == id);
+            paste.Hits++;
+            _context.SaveChanges();
             return paste;
         }
 
@@ -27,16 +30,35 @@ namespace Pastehub.Helpers
         {
             if (userId == null)
                 return null;
-
+            
             var pastes = _context.Pastes.Where(p => p.UserId == userId).ToList();
+            GetPasteAlive(pastes);
+            pastes = _context.Pastes.Where(p => p.UserId == userId).ToList();
             return pastes;
         }
 
         public IEnumerable<Paste> GetPublicPastes()
         {
             var pastes = _context.Pastes.Where(p => String.Compare(p.PasteExposure, "public", true) == 0).ToList();
+            GetPasteAlive(pastes);
+            pastes = _context.Pastes.Where(p => String.Compare(p.PasteExposure, "public", true) == 0).ToList();
             return pastes;
         }
+
+        public void GetPasteAlive(IEnumerable<Paste> pastes)
+        {
+            foreach (var paste in pastes)
+            {
+                if (String.Compare(paste.PasteExpiration, "Never") != 0 &&
+                    TimeSpan.Compare(DateTime.Now.Subtract(paste.CreatedDateTime), PasteExpiration.ToTimeSpan(paste.PasteExpiration)) == 1)
+                {
+                    var obj = _context.Pastes.FirstOrDefault(p => p.Id == paste.Id);
+                    if (obj != null)
+                        _context.Pastes.Remove(obj);
+                }
+            }
+            _context.SaveChanges();
+        } 
 
         public void AddPaste(Paste newPaste)
         {
@@ -59,7 +81,8 @@ namespace Pastehub.Helpers
 
         public string GetSyntaxDisplay(string syntax)
         {
-            return _context.SyntaxHighlights.Where(s => s.Name == syntax).Select(s => s.NameDisplay).ToString();
+            var obj = _context.SyntaxHighlights.Single(s => s.Name == syntax);
+            return obj.NameDisplay;
         }
     }
 }

@@ -21,11 +21,13 @@ namespace Pastehub.Models
             PasteViewModel pasteViewModel = new PasteViewModel()
             {
                 Id = paste.Id,
+                CreatedDateTime = paste.CreatedDateTime,
                 PasteContent =  paste.PasteContent,
                 PasteExpiration = paste.PasteExpiration,
                 PasteExposure = paste.PasteExposure,
                 PasteName = paste.PasteName,
-                SyntaxHighlight = _repo.GetSyntaxDisplay(paste.SyntaxHighlight)
+                SyntaxHighlight = _repo.GetSyntaxDisplay(paste.SyntaxHighlight),
+                Hits = paste.Hits
             };
 
             return pasteViewModel;

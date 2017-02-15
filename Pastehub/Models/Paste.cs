@@ -13,6 +13,8 @@ namespace Pastehub.Models
         public string PasteExpiration { get; set; }
         public string PasteExposure { get; set; }
         public string PasteName { get; set; }
+        public int Hits { get; set; }
+        public DateTime CreatedDateTime { get; set; }
         public IEnumerable<SyntaxHighlight> SyntaxHighlights { get; set; }
 
         public string UserId { get; set; }
