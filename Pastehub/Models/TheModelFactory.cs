@@ -9,11 +9,11 @@ namespace Pastehub.Models
 {
     public class TheModelFactory
     {
-        private PastehubRepository _repo;
+        private IPastehubRepository _repo;
 
-        public TheModelFactory()
+        public TheModelFactory(IPastehubRepository repo)
         {
-            _repo = new PastehubRepository();
+            _repo = repo;
         }
 
         public PasteViewModel CreatePaste(Paste paste)

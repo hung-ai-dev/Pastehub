@@ -1,3 +1,7 @@
+using System.Web.Http;
+using Pastehub.Helpers;
+using WebApiContrib.IoC.Ninject;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Pastehub.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Pastehub.App_Start.NinjectWebCommon), "Stop")]
 
@@ -45,6 +49,9 @@ namespace Pastehub.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+                GlobalConfiguration.Configuration.DependencyResolver =
+                    new NinjectResolver(kernel);
+
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -61,7 +68,7 @@ namespace Pastehub.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-
+            kernel.Bind<IPastehubRepository>().To<PastehubRepository>();
         }        
     }
 }

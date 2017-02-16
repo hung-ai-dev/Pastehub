@@ -17,13 +17,13 @@ namespace Pastehub.Controllers
 {
     public class PasteController : Controller
     {
-        private PastehubRepository _repo;
+        private IPastehubRepository _repo;
         private TheModelFactory _factory;
 
-        public PasteController()
+        public PasteController(IPastehubRepository repo)
         {
-            _repo = new PastehubRepository();
-            _factory = new TheModelFactory();
+            _repo = repo;
+            _factory = new TheModelFactory(repo);
         }
 
         public ActionResult Detail(int id)

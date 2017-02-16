@@ -12,11 +12,11 @@ namespace Pastehub.Controllers.API
 {
     public class PastesController : ApiController
     {
-        private PastehubRepository _repo;
+        private IPastehubRepository _repo;
 
-        public PastesController()
+        public PastesController(IPastehubRepository repo)
         {
-            _repo = new PastehubRepository();
+            _repo = repo;
         }
 
         [HttpGet]

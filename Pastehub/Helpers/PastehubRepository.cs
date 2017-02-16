@@ -9,7 +9,7 @@ using Pastehub.Constants;
 
 namespace Pastehub.Helpers
 {
-    public class PastehubRepository
+    public class PastehubRepository : IPastehubRepository
     {
         private ApplicationDbContext _context;
 
