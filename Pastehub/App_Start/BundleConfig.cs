@@ -22,12 +22,14 @@ namespace Pastehub
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/prism.js"));
+                      "~/Scripts/prism.js",
+                      "~/Scripts/bootbox.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/Site.css",
-                      "~/Content/prism.css"));
+                      "~/Content/prism.css",
+                      "~/Content/font-awesome.min.css"));
         }
     }
 }

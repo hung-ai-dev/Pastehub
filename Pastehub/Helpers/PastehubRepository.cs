@@ -73,6 +73,21 @@ namespace Pastehub.Helpers
             }
         }
 
+        public void DeletePaste(int id)
+        {
+            try
+            {
+                var paste = GetPasteWithId(id);
+                _context.Pastes.Remove(paste);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
         public IEnumerable<SyntaxHighlight> GetSyntax()
         {
             var syntaxList = _context.SyntaxHighlights.ToList();

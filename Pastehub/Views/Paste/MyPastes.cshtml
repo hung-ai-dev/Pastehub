@@ -10,13 +10,14 @@
         <th>EXPIRES</th>
         <th>HITS</th>
         <th>SYNTAX</th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.ActionLink(@item.PasteName, "Detail", "Paste", new { id = @item.Id }, null)
+                @Html.ActionLink(@item.PasteName, "Detail", "Paste", new {id = @item.Id}, null)
             </td>
             <td>
                 @item.CreatedDateTime.ToString("dd/MM/yy")
@@ -24,6 +25,45 @@
             <td>@item.PasteExpiration</td>
             <td>@item.Hits</td>
             <td>@item.SyntaxHighlight</td>
+
+            <td>
+                <a href="#" class="js-delete-paste" data="@item.Id"><i data="@item.Id" class="fa fa-times" aria-hidden="true"></i></a>
+                <a href="@Url.Action("Edit", "Paste", new {id = @item.Id})" class="pull-right"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            </td>
         </tr>
     }
 </table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".js-delete-paste").click(function(e) {
+                bootbox.dialog({
+                    message: "Do you really want to delete this paste",
+                    buttons: {
+                        no: {
+                            label: "No!",
+                            className: "btn-success",
+                            callback: function () {
+                                bootbox.hideAll();
+                            }
+                        },
+                        yes: {
+                            label: "Yes!",
+                            className: "btn-danger",
+                            callback: function () {
+                                var $button = $(e.target);
+                                console.log($button);
+                                var link = "/Paste/Delete/" + $button.attr("data");
+                                console.log(link);
+                                window.location.href = link;
+                            }
+                        }
+                    }
+                });
+            }) ;
+        })
+    </script>
+}
+
+

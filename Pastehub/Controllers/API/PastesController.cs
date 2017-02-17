@@ -47,5 +47,27 @@ namespace Pastehub.Controllers.API
                 return InternalServerError();
             }
         }
+
+        [HttpDelete]
+        [Route("api/pastes/{id}")]
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                try
+                {
+                    _repo.DeletePaste(id);
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+        }
     }
 }

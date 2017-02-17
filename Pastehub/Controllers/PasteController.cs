@@ -87,5 +87,31 @@ namespace Pastehub.Controllers
                 return Content(exception.Message);
             }
         }
+
+        [Authorize]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                var client = PastehubHttpClient.GetClient();
+                var uri = new Uri(client.BaseAddress + "api/pastes/" + id);
+                var response = await client.DeleteAsync(uri);
+                if (response.IsSuccessStatusCode)
+                    return RedirectToAction("Index", "Home");
+                else
+                {
+                    return Content("Error");
+                }
+            }
+            catch (Exception exception)
+            {
+                return Content(exception.Message);
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
     }
 }
